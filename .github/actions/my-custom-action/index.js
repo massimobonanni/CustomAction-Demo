@@ -1,10 +1,10 @@
-const core = require('@actions/core');
+const core = require("@actions/core");
 
 async function run() {
   try {
-    const data = core.getInput('data') || '<no data passed>';
+    const data = core.getInput("data") || "<no data passed>";
     console.log("Starting action");
-    await new Promise(resolve => setTimeout(resolve, 10000));
+    await new Promise((resolve) => setTimeout(resolve, 10000));
     core.debug("This is a debug message");
     console.log(`Data in input : ${data}`);
     console.log("Action completed succesfully.");
