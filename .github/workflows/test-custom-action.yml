@@ -16,3 +16,4 @@ jobs:
         uses: ./.github/actions/my-custom-action
         with:
           data: "Hello, world!"
+          interval: 20000
