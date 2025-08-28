@@ -7,7 +7,7 @@ inputs:
     description: "The input data to write in the console"
     required: false
     default: "<no data passed>"
-  interval:
+  timeout:
     description: "Millisecond to wait in the action"
     required: false
     default: 10000
