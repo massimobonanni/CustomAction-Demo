@@ -1,14 +1,21 @@
 const core = require('@actions/core');
 
+function logWithTimestamp(message) {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] ${message}`);
+}
+
 async function run() {
   try {
     const data = core.getInput("data") || "<no data passed>";
-    console.log("Starting action");
-    await new Promise((resolve) => setTimeout(resolve, 10000));
-    console.log(`Data in input : ${data}`);
-    console.log("Action completed succesfully.");
+    const timeout = core.getInput("timeout") || 10000;
+
+    logWithTimestamp("Starting action");
+    await new Promise((resolve) => setTimeout(resolve, timeout));
+    logWithTimestamp(`Data in input : ${data}`);
+    logWithTimestamp("Action completed succesfully.");
   } catch (error) {
-    console.log(`Installation failed: ${error.message}`);
+    core.setFailed(`Installation failed: ${error.message}`);
   }
 }
 
