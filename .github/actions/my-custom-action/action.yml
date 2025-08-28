@@ -1,0 +1,13 @@
+name: "Simple custom action"
+description: "This action write in the console the input value"
+author: "Your Name"
+
+inputs:
+  data:
+    description: "The input data to write in the console"
+    required: false
+    default: "<no data passed>"
+
+runs:
+  using: "node16"
+  main: "index.js"

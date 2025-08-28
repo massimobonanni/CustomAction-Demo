@@ -1,0 +1,19 @@
+name: Test custom action
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch
+
+jobs:
+  job01:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run custom actions
+        uses: ./.github/actions/my-custom-action
+        with:
+          data: "Hello, world!"
