@@ -11,9 +11,12 @@ async function run() {
     const timeout = core.getInput("timeout") || 10000;
 
     logWithTimestamp("Starting action");
+    core.info("This is an info message");
+    core.debug("This is a debug message");
     await new Promise((resolve) => setTimeout(resolve, timeout));
     logWithTimestamp(`Data in input : ${data}`);
     logWithTimestamp("Action completed succesfully.");
+    
   } catch (error) {
     core.setFailed(`Installation failed: ${error.message}`);
   }
