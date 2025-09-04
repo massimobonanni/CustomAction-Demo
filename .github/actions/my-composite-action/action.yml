@@ -7,7 +7,10 @@ inputs:
     default: "8.0.x"
     required: false
 
-
+outputs:
+  script-result:
+    description: "Result from installer"
+    value: ${{ steps.set-result.outputs.result }}
 
 runs:
   using: "composite"
