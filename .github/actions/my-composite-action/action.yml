@@ -16,12 +16,17 @@ runs:
   using: "composite"
   steps:
     - name: Set up .NET
+      id: setup-dotnet
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ inputs.dotnet-version }}  
-    - name: run-script
-      if: Success()
-        id: run-script
-        run: echo "result=Success" >> $GITHUB_OUTPUT
-        shell: bash
+    - name: Set result output
+      id: set-result
+      run: |
+        if [ "${{ steps.setup-dotnet.outcome }}" = "success" ]; then
+          echo "result=Success" >> $GITHUB_OUTPUT
+        else
+          echo "result=Failed" >> $GITHUB_OUTPUT
+        fi
+      shell: bash
       
