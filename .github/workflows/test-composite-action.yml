@@ -11,6 +11,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Use composite action
+        id: call-composite-action
         uses: ./.github/actions/my-composite-action
         with:
           dotnet-version: "9.0.x"
+      - name: Log composite action output
+        run: echo "Composite action result: ${{ steps.call-composite-action.outputs.script-result }}"
