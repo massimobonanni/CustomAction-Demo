@@ -10,7 +10,7 @@ inputs:
 outputs:
   script-result:
     description: "Result from installer"
-    value: ${{ steps.run-script.outputs.result }}
+    value: ${{ steps.set-result.outputs.result }}
 
 runs:
   using: "composite"
