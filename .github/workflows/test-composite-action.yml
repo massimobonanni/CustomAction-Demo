@@ -1,0 +1,14 @@
+name: Test composite action
+
+# Controls when the workflow will run
+on: workflow_dispatch
+
+jobs:
+  job01:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use composite action
+        uses: ./.github/actions/my-composite-action
+        with:
+          dotnet-version: "9.0.x"
