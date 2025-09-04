@@ -14,3 +14,5 @@ jobs:
         uses: ./.github/actions/my-composite-action
         with:
           dotnet-version: "9.0.x"
+      - name: Log composite action output
+        run: echo ${{ steps.myaction.outputs.script-result }}
