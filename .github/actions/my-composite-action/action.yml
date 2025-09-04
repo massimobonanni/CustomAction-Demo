@@ -1,5 +1,5 @@
 name: "My Composite Action"
-description: "A reusable composite action that checks out code and sets up Node.js"
+description: "A reusable composite action that setup .NET."
 
 inputs:
   dotnet-version:
