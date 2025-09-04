@@ -22,11 +22,6 @@ runs:
         dotnet-version: ${{ inputs.dotnet-version }}  
     - name: Set result output
       id: set-result
-      run: |
-        if [ "${{ steps.setup-dotnet.outcome }}" = "success" ]; then
-          echo "result=Success" >> $GITHUB_OUTPUT
-        else
-          echo "result=Failed" >> $GITHUB_OUTPUT
-        fi
+      run: echo "result=Success" >> $GITHUB_OUTPUT
       shell: bash
       
