@@ -7,6 +7,11 @@ inputs:
     default: "8.0.x"
     required: false
 
+outputs:
+  script-result:
+    description: "Result from installer"
+    value: ${{ steps.run-script.outputs.result }}
+
 runs:
   using: "composite"
   steps:
@@ -14,4 +19,9 @@ runs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ inputs.dotnet-version }}  
+    - name: run-script
+      if: Success()
+        id: run-script
+        run: echo "result=Success" >> $GITHUB_OUTPUT
+        shell: bash
       
