@@ -1,5 +1,5 @@
 name: "My Composite Action"
-description: "A reusable composite action that setup .NET."
+description: "A reusable composite action that setup .NET"
 
 inputs:
   dotnet-version:
@@ -22,6 +22,11 @@ runs:
         dotnet-version: ${{ inputs.dotnet-version }}  
     - name: Set result output
       id: set-result
-      run: echo "result=Success" >> $GITHUB_OUTPUT
+      run: |
+        if [ "${{ steps.setup-dotnet.outcome }}" = "success" ]; then
+          echo "result=Success" >> $GITHUB_OUTPUT
+        else
+          echo "result=Failed" >> $GITHUB_OUTPUT
+        fi
       shell: bash
       
