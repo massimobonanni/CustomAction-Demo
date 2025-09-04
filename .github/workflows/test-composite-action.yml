@@ -1,6 +1,5 @@
 name: Test composite action
 
-# Controls when the workflow will run
 on: workflow_dispatch
 
 jobs:
