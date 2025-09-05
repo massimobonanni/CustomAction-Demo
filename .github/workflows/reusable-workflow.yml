@@ -15,6 +15,8 @@ on:
 jobs:
   setup-net:
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.set-result.outputs.result }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up .NET
