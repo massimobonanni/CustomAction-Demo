@@ -4,6 +4,8 @@ on: workflow_dispatch
 
 jobs:
   test:
+    runs-on: ubuntu-latest
+    steps:
     - name: Call reusable workflow
       id: call-reusable-workflow
       uses: ./.github/workflows/reusable-workflow.yml
