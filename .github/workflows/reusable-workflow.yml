@@ -8,7 +8,6 @@ on:
         type: string
     outputs:
       result:
-        type: string
         description: "Result from .NET setup"
         value: ${{ jobs.setup-net.outputs.result }}
 
