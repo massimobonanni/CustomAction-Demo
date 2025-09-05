@@ -1,0 +1,33 @@
+name: Reusable workflow_call
+
+on:
+  workflow_call:
+    inputs:
+      dotnet-version:
+        required: true
+        type: string
+    outputs:
+      result:
+        type: string
+        description: "Result from .NET setup"
+        value: ${{ jobs.setup-net.outputs.result }}
+
+jobs:
+  setup-net:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up .NET
+        id: setup-dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+      - name: Set result output
+        id: set-result
+        run: |
+          if [ "${{ steps.setup-dotnet.outcome }}" = "success" ]; then
+            echo "result=Success" >> $GITHUB_OUTPUT
+          else
+            echo "result=Failed" >> $GITHUB_OUTPUT
+          fi
+        shell: bash

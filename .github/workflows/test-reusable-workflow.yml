@@ -1,0 +1,13 @@
+name: Test reusable workflow
+
+on: workflow_dispatch
+
+jobs:
+  test:
+    - name: Call reusable workflow
+      id: call-reusable-workflow
+      uses: ./.github/workflows/reusable-workflow.yml
+      with:
+        dotnet-version: '9.0.x'
+    - name: Log reusable workflow output
+      run: echo ${{ steps.call-reusable-workflow.outputs.result }}
