@@ -10,7 +10,7 @@ async function run() {
     const data = core.getInput("data") || "<no data passed>";
     const timeout = core.getInput("timeout") || 10000;
 
-    logWithTimestamp("Starting action");
+    logWithTimestamp("Starting action - V2.0");
     core.info("This is an info message");
     core.debug("This is a debug message");
     await new Promise((resolve) => setTimeout(resolve, timeout));
